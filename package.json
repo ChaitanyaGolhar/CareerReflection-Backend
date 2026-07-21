@@ -10,7 +10,8 @@
     "db:migrate": "bunx prisma migrate dev",
     "db:push": "bunx prisma db push",
     "db:studio": "bunx prisma studio",
-    "seed": "bun prisma/seed.ts"
+    "seed": "bun prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "devDependencies": {
     "@types/bcryptjs": "^3.0.0",
