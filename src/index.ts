@@ -36,7 +36,7 @@ app.use(
   "/reflection",
   rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour
-    max: process.env.NODE_ENV === "production" ? 5 : 100,
+    max: process.env.NODE_ENV === "production" ? 10 : 100,
     message: { error: "You have submitted too many reflections. Please try again later." },
   })
 );
