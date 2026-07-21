@@ -6,6 +6,7 @@ import reflectionRoutes from "./routes/reflection.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = parseInt(process.env.PORT ?? "3001", 10);
 
 // ─── Middleware ──────────────────────────────────────────────────────────────
