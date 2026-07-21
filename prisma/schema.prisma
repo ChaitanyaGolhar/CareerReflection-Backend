@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Contributor {
+  id             String       @id @default(cuid())
+  name           String
+  email          String       @unique
+  linkedin       String?
+  college        String
+  graduationYear Int
+  company        String
+  role           String
+  reflections    Reflection[]
+  createdAt      DateTime     @default(now())
+}
+
+model Reflection {
+  id                   String      @id @default(cuid())
+  contributorId        String
+  contributor          Contributor @relation(fields: [contributorId], references: [id])
+  submittedAt          DateTime    @default(now())
+  completionTime       Int         // seconds
+  wantsResearchUpdates Boolean     @default(false)
+  wantsConversation    Boolean     @default(false)
+  wantsMentoring       Boolean     @default(false)
+  anythingElse         String?
+  answers              Answer[]
+}
+
+model Answer {
+  id           String     @id @default(cuid())
+  reflectionId String
+  reflection   Reflection @relation(fields: [reflectionId], references: [id], onDelete: Cascade)
+  questionKey  String
+  answer       String     @db.Text
+  createdAt    DateTime   @default(now())
+}
