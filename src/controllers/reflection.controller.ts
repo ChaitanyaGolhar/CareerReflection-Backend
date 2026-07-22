@@ -8,7 +8,7 @@ export const submitReflectionSchema = z.object({
   // Chapter 1 — About You
   name: z.string().min(2, "Please enter your full name."),
   email: z.string().email("Could you double-check your email?"),
-  linkedin: z.string().url("Please enter a valid LinkedIn URL.").optional().or(z.literal("")),
+  linkedin: z.string().optional().or(z.literal("")),
   college: z.string().min(2, "Please enter your college name."),
   graduationYear: z.number().int().min(1980).max(new Date().getFullYear()),
   company: z.string().min(1, "Please enter your current company."),
