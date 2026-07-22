@@ -13,7 +13,7 @@ const PORT = parseInt(process.env.PORT ?? "3001", 10);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "http://localhost:5173",
+    origin: process.env.FRONTEND_URL ?? "https://career-reflection.vercel.app",
     credentials: true,
   })
 );
