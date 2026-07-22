@@ -11,6 +11,7 @@ export const submitReflectionSchema = z.object({
   linkedin: z.string().optional().or(z.literal("")),
   college: z.string().min(2, "Please enter your college name."),
   graduationYear: z.number().int().min(1980).max(new Date().getFullYear()),
+  experienceYears: z.number().int().min(0).max(60),
   company: z.string().min(1, "Please enter your current company."),
   role: z.string().min(1, "Please enter your current role."),
 
@@ -48,6 +49,7 @@ export async function submitReflection(req: Request, res: Response) {
         linkedin: data.linkedin || null,
         college: data.college,
         graduationYear: data.graduationYear,
+        experienceYears: data.experienceYears,
         company: data.company,
         role: data.role,
       },
@@ -57,6 +59,7 @@ export async function submitReflection(req: Request, res: Response) {
         linkedin: data.linkedin || null,
         college: data.college,
         graduationYear: data.graduationYear,
+        experienceYears: data.experienceYears,
         company: data.company,
         role: data.role,
       },

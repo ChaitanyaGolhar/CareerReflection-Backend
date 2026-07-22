@@ -20,6 +20,7 @@ model Contributor {
   linkedin       String?
   college        String
   graduationYear Int
+  experienceYears Int @default(0)
   company        String
   role           String
   reflections    Reflection[]
