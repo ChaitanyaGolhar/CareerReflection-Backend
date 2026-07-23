@@ -13,7 +13,18 @@ const PORT = parseInt(process.env.PORT ?? "3001", 10);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "https://career-reflection.vercel.app",
+    origin: (origin, callback) => {
+      const allowed = [
+        process.env.FRONTEND_URL ?? "https://career-reflection.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000"
+      ];
+      if (!origin || allowed.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
